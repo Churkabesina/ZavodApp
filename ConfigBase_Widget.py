@@ -382,11 +382,11 @@ class ConfigBaseWidget(QtWidgets.QWidget):
                     len_line_value = float(lenght.text().replace(',', '.'))
                     diameter_value = float(re.split(r'[xXхХ]', diameter.text().replace(',', '.'))[0])
                     tolshina_value = float(re.split(r'[xXхХ]', diameter.text().replace(',', '.'))[1])
-                    weight = str(6.16225 * (diameter_value ** 2 - (diameter_value - 2 * tolshina_value) ** 2)*len_line_value/(10 ** 9))
+                    weight = str(round(6.16225 * (diameter_value ** 2 - (diameter_value - 2 * tolshina_value) ** 2)*len_line_value/(10 ** 9) * 1000, 5))
                 else:
                     len_line_value = float(lenght.text().replace(',', '.'))
                     diameter_value = float(diameter.text().replace(',', '.'))
-                    weight = str(6.169315 * (diameter_value ** 2) * len_line_value / (10 ** 6))
+                    weight = str(round(6.169315 * (diameter_value ** 2) * len_line_value / (10 ** 6), 5))
 
                 with sqlite3.connect(f'{self.DATA_PATH}database.db') as add_conn:
                     cursor = add_conn.cursor()
@@ -471,7 +471,7 @@ class ConfigBaseWidget(QtWidgets.QWidget):
                         diameter_value = float(re.split(r'[xXхХ]', row[1])[0])
                         tolshina_value = float(re.split(r'[xXхХ]', row[1])[1])
                         len_line_value = float(row[4])
-                        row[5] = str(round(6.16225*(diameter_value**2 - ((diameter_value - 2*tolshina_value)**2))*len_line_value/(10**9), 5))
+                        row[5] = str(round(6.16225*(diameter_value**2 - ((diameter_value - 2*tolshina_value)**2))*len_line_value/(10**9) * 1000, 5))
                     else:
                         row[1] = str(row[1]).replace(',', '.')
                         row[4] = str(row[4]).replace(',', '.')
