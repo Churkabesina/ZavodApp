@@ -329,6 +329,7 @@ class ZAVOD(QtWidgets.QMainWindow):
         self.comboBox_name.setInsertPolicy(QtWidgets.QComboBox.InsertPolicy.NoInsert)
         self.comboBox_name.completer().setCompletionMode(QtWidgets.QCompleter.CompletionMode.PopupCompletion)
         self.comboBox_name.completer().popup().setFont(self.font_rows)
+        self.comboBox_name.completer().setFilterMode(QtCore.Qt.MatchFlag.MatchContains)
         self.comboBox_name.lineEdit().setFont(self.font_rows)
         self.horizontalLayout_3.addWidget(self.comboBox_name)
 
@@ -586,6 +587,7 @@ class ZAVOD(QtWidgets.QMainWindow):
         self.comboBox_name.setEditable(True)
         self.comboBox_name.setInsertPolicy(QtWidgets.QComboBox.InsertPolicy.NoInsert)
         self.comboBox_name.completer().setCompletionMode(QtWidgets.QCompleter.CompletionMode.PopupCompletion)
+        self.comboBox_name.completer().setFilterMode(QtCore.Qt.MatchFlag.MatchContains)
         self.comboBox_name.completer().popup().setFont(self.font_rows)
         self.comboBox_name.lineEdit().setFont(self.font_rows)
         self.horizontalLayout_3.addWidget(self.comboBox_name)
