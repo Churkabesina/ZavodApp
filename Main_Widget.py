@@ -714,10 +714,13 @@ class ZAVOD(QtWidgets.QMainWindow):
 
     def amount_product_changed(self):  # slot редактируемой QLineEdit(кол-во продукции)
         amount_line = self.sender()
-        weight_line = amount_line.parent().findChild(QtWidgets.QLineEdit, 'line_edit_weight')
+        amount_line_text: str = amount_line.text()
         parent_frame = amount_line.parent()
-        if amount_line.text() != '' and weight_line.placeholderText() != 'None':
-            weight_result = round(int(amount_line.text()) * float(weight_line.placeholderText()), 1)
+        diameter_line_text = parent_frame.findChild(QtWidgets.QLineEdit, 'lineEdit_zagotovka').text()
+        len_line_text = parent_frame.findChild(QtWidgets.QLineEdit, 'lineEdit_lenght').text()
+        weight_line = parent_frame.findChild(QtWidgets.QLineEdit, 'line_edit_weight')
+        if amount_line_text.isnumeric() and diameter_line_text != '' and len_line_text != '':
+            weight_result = round(int(amount_line_text) * float(weight_line.placeholderText()), 1)
             parent_frame.findChild(QtWidgets.QLineEdit, 'line_edit_weight').setText(f'{weight_result}')
         else:
             weight_line.setText('')
@@ -912,8 +915,9 @@ if __name__ == "__main__":
         first_start.close()
         print(f'Создана новая база данных')
     app = QtWidgets.QApplication(sys.argv)
-    app.setStyleSheet('QMainWindow { background-color: #cbcfd0 } QComboBox QAbstractItemView{min-width: 300px;} QListView {min-width: 300px;}')
+    app.setStyleSheet('QMainWindow { background-color: #cbcfd0 }')
     app.setWindowIcon(QtGui.QIcon(f'{SRC_PATH}app_icon.ico'))
     MainWindow = ZAVOD()
+    MainWindow.setStyleSheet('QComboBox QAbstractItemView{min-width: 300px;} QListView {min-width: 300px;}')
     MainWindow.show()
     sys.exit(app.exec())

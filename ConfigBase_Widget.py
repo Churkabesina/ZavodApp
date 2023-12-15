@@ -86,6 +86,7 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
         self.product = QtWidgets.QLabel(parent=self.frame)
         self.product.setFont(self.font_rows)
         self.product.setObjectName("product")
@@ -143,31 +144,48 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
         self.product = QtWidgets.QLineEdit(parent=self.frame_new_row)
         self.product.setObjectName("product")
         self.product.setFont(self.font_rows)
         self.horizontalLayout.addWidget(self.product)
+
+        # self.type_metall = QtWidgets.QLineEdit(parent=self.frame_new_row)
+        self.type_metall = QtWidgets.QComboBox(parent=self.frame_new_row)
+        self.type_metall.addItems(['Круг', 'Труба'])
+        self.type_metall.setObjectName("type_metall")
+        self.type_metall.setFont(self.font_rows)
+        # self.type_metall.currentIndexChanged.connect(self.type_metall_changed)
+        self.horizontalLayout.addWidget(self.type_metall)
+
         self.diameter = QtWidgets.QLineEdit(parent=self.frame_new_row)
         self.diameter.setObjectName("diameter")
         self.diameter.setFont(self.font_rows)
+        # self.diameter.addItems([str(x) for x in range(30, 351, 5)])
+        # self.diameter.setPlaceholderText('')
+        # self.diameter.setCurrentIndex(-1)
         self.horizontalLayout.addWidget(self.diameter)
-        self.type_metall = QtWidgets.QLineEdit(parent=self.frame_new_row)
-        self.type_metall.setObjectName("type_metall")
-        self.type_metall.setFont(self.font_rows)
-        self.horizontalLayout.addWidget(self.type_metall)
+
+        # self.tolshina = QtWidgets.QComboBox(parent=self.frame_new_row)
+        # self.tolshina.setObjectName('tolshina')
+        # self.tolshina.setFont(self.font_rows)
+        # self.tolshina.addItems([str(x / 10) for x in range(5, 100, 5)])
+        # self.tolshina.setPlaceholderText('')
+        # self.tolshina.setCurrentIndex(-1)
+        # self.tolshina.setEnabled(False)
+        # self.horizontalLayout.addWidget(self.tolshina)
+
         self.type_steel = QtWidgets.QLineEdit(parent=self.frame_new_row)
         self.type_steel.setText("")
         self.type_steel.setFont(self.font_rows)
         self.type_steel.setObjectName("type_steel")
         self.horizontalLayout.addWidget(self.type_steel)
+
         self.lenght = QtWidgets.QLineEdit(parent=self.frame_new_row)
         self.lenght.setObjectName("lenght")
         self.lenght.setFont(self.font_rows)
         self.horizontalLayout.addWidget(self.lenght)
-        # self.weight = QtWidgets.QLineEdit(parent=self.frame_new_row)
-        # self.weight.setObjectName("weight")
-        # self.weight.setFont(self.font_rows)
-        # self.horizontalLayout.addWidget(self.weight)
+
         self.draw_path = QtWidgets.QLineEdit(parent=self.frame_new_row)
         self.draw_path.setReadOnly(True)
         self.draw_path.setObjectName("draw_path")
@@ -189,6 +207,7 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.product.setPlaceholderText("Продукт")
         self.diameter.setPlaceholderText("Диаметр, мм")
+        # self.tolshina.setPlaceholderText('Толщина')
         self.type_metall.setPlaceholderText("Вид металла")
         self.type_steel.setPlaceholderText("Марка стали")
         self.lenght.setPlaceholderText("Длина, мм")
@@ -210,42 +229,53 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.product = QtWidgets.QLineEdit(parent=self.frame)
+
         self.product.setFont(self.font_rows)
         self.product.setReadOnly(True)
         self.product.setObjectName("product")
         self.horizontalLayout_2.addWidget(self.product)
+
         self.diameter = QtWidgets.QLineEdit(parent=self.frame)
         self.diameter.setFont(self.font_rows)
         self.diameter.setReadOnly(True)
         self.diameter.setObjectName("diameter")
+        self.diameter.setPlaceholderText('Диаметр, мм')
         self.horizontalLayout_2.addWidget(self.diameter)
+
         self.type_metall = QtWidgets.QLineEdit(parent=self.frame)
         self.type_metall.setFont(self.font_rows)
         self.type_metall.setReadOnly(True)
         self.type_metall.setObjectName("type_metall")
         self.horizontalLayout_2.addWidget(self.type_metall)
+
         self.type_steel = QtWidgets.QLineEdit(parent=self.frame)
         self.type_steel.setFont(self.font_rows)
         self.type_steel.setReadOnly(True)
         self.type_steel.setObjectName("type_steel")
+        self.type_steel.setPlaceholderText('Марка стали')
         self.horizontalLayout_2.addWidget(self.type_steel)
+
         self.lenght = QtWidgets.QLineEdit(parent=self.frame)
         self.lenght.setFont(self.font_rows)
         self.lenght.setReadOnly(True)
         self.lenght.setObjectName("lenght")
+        self.lenght.setPlaceholderText('Длина, мм')
         self.horizontalLayout_2.addWidget(self.lenght)
 
         self.weight = QtWidgets.QLineEdit(parent=self.frame)
         self.weight.setReadOnly(True)
         self.weight.setObjectName("weight")
         self.weight.setFont(self.font_rows)
+        self.weight.setPlaceholderText('Вес за единицу')
         self.horizontalLayout_2.addWidget(self.weight)
 
         self.draw_path = QtWidgets.QLineEdit(parent=self.frame)
         self.draw_path.setFont(self.font_rows)
         self.draw_path.setReadOnly(True)
         self.draw_path.setObjectName("draw_path")
+        self.draw_path.setPlaceholderText('Чертёж')
         self.horizontalLayout_2.addWidget(self.draw_path)
+
         self.checkbox = QtWidgets.QCheckBox(parent=self.frame)
         self.checkbox.setText("")
         self.checkbox.setObjectName("checkbox")
@@ -278,7 +308,6 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.lenght.setText(row_data[4])
         self.weight.setText(row_data[5])
         self.draw_path.setText(row_data[6])
-        self.draw_path.setPlaceholderText((row_data[6]))
         self.del_btn.setObjectName(str(row_data[-1]))
         self.update_btn.setObjectName(str(row_data[-1]))
 
@@ -369,16 +398,15 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         add_btn = self.sender()
         product = add_btn.parent().findChild(QtWidgets.QLineEdit, 'product')
         diameter = add_btn.parent().parent().findChild(QtWidgets.QLineEdit, 'diameter')
-        type_metall = add_btn.parent().parent().findChild(QtWidgets.QLineEdit, 'type_metall')
+        # tolshina = add_btn.parent().parent().findChild(QtWidgets.QComboBox, 'tolshina')
+        type_metall = add_btn.parent().parent().findChild(QtWidgets.QComboBox, 'type_metall')
         type_steel = add_btn.parent().parent().findChild(QtWidgets.QLineEdit, 'type_steel')
         lenght = add_btn.parent().parent().findChild(QtWidgets.QLineEdit, 'lenght')
         draw_path = add_btn.parent().parent().findChild(QtWidgets.QLineEdit, 'draw_path')
-        if len(product.text()) != 0 and len(draw_path.text()) != 0 and len(diameter.text()) != 0 and len(
-                type_metall.text()) != 0 and len(type_steel.text()) != 0 and len(lenght.text()) != 0:
+        if len(product.text()) != 0:
+            if diameter.text() != '' and lenght.text() != '':
 
-            if type_metall.text() in self.truba_name or type_metall.text() in self.krug_name:
-
-                if type_metall.text().strip() in self.truba_name:
+                if type_metall.currentText() == 'Труба':
                     len_line_value = float(lenght.text().replace(',', '.'))
                     diameter_value = float(re.split(r'[xXхХ]', diameter.text().replace(',', '.'))[0])
                     tolshina_value = float(re.split(r'[xXхХ]', diameter.text().replace(',', '.'))[1])
@@ -392,7 +420,7 @@ class ConfigBaseWidget(QtWidgets.QWidget):
                     cursor = add_conn.cursor()
                     cursor.execute(
                         'INSERT INTO Products (product, diameter, type_metall, type_steel, lenght, weight, draw_path) VALUES (?,?,?,?,?,?,?)',
-                        (product.text(), diameter.text(), type_metall.text(), type_steel.text(), lenght.text(),
+                        (product.text(), diameter.text(), type_metall.currentText(), type_steel.text(), lenght.text(),
                          weight, draw_path.text()))
                     add_conn.commit()
                 cursor.close()
@@ -403,19 +431,41 @@ class ConfigBaseWidget(QtWidgets.QWidget):
                 self.main_widget.list_products_init()
                 product.setText('')
                 diameter.setText('')
-                type_metall.setText('')
                 type_steel.setText('')
                 lenght.setText('')
                 draw_path.setText('')
                 path = draw_path.placeholderText()
-                shutil.copy(path, self.DRAWS_PATH)  # !!!!!!ошибка про копировании одинаковых файлов!!!!!
-                draw_path.setPlaceholderText('Чертеж')
+                if path != 'Чертёж':
+                    shutil.copy(path, self.DRAWS_PATH)  # !!!!!!ошибка про копировании одинаковых файлов!!!!!
+                draw_path.setPlaceholderText('Чертёж')
                 self.create_warn_messange('Уведомление', 'Новая запись успешно добавлена')
+
             else:
-                self.create_warn_messange('Предупреждение', 'Поле тип металла неправильно заполнено')
-                return None
+                with sqlite3.connect(f'{self.DATA_PATH}database.db') as add_conn:
+                    cursor = add_conn.cursor()
+                    cursor.execute(
+                        'INSERT INTO Products (product, diameter, type_metall, type_steel, lenght, weight, draw_path) VALUES (?,?,?,?,?,?,?)',
+                        (product.text(), diameter.text(), type_metall.currentText(), type_steel.text(), lenght.text(),
+                         '', draw_path.text()))
+                    add_conn.commit()
+                cursor.close()
+                add_conn.close()
+                for frame in self.main_widget.findChild(QtWidgets.QFrame, 'frame_for_rows').children():
+                    if isinstance(frame, QtWidgets.QFrame):
+                        frame.findChild(QtWidgets.QComboBox).addItem(f'{product.text()}')
+                self.main_widget.list_products_init()
+                product.setText('')
+                diameter.setText('')
+                type_steel.setText('')
+                lenght.setText('')
+                draw_path.setText('')
+                path = draw_path.placeholderText()
+                if path != 'Чертёж':
+                    shutil.copy(path, self.DRAWS_PATH)  # !!!!!!ошибка про копировании одинаковых файлов!!!!!
+                draw_path.setPlaceholderText('Чертёж')
+                self.create_warn_messange('Уведомление', 'Новая запись успешно добавлена')
         else:
-            self.create_warn_messange('Предупреждение', 'Заполните все поля', '150')
+            self.create_warn_messange('Предупреждение', 'Заполните хотя бы название', '250')
 
     def closeEvent(self, a0):
         self.deleteLater()
@@ -515,3 +565,12 @@ class ConfigBaseWidget(QtWidgets.QWidget):
         self.warn_msg.setText(f'{text}')
         self.warn_msg.accepted.connect(self.accepting_msg_box_config_widget)
         self.warn_msg.show()
+
+    # def type_metall_changed(self):
+    #     if self.sender().currentText() == 'Труба':
+    #         print('Truba')
+    #         # self.tolshina.setEnabled(True)
+    #     else:
+    #         print('Krug')
+    #         # self.tolshina.setEnabled(False)
+    #         # self.tolshina.setCurrentIndex(-1)
